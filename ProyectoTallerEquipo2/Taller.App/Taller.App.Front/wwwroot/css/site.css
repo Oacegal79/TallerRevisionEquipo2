@@ -1,0 +1,54 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.class-icon-add{
+  color: #0D6EFD;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.class-contain-title{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.class-icon-edit{
+  color: #0D6EFD;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.class-icon-del{
+  color: #fd390d;
+  font-size: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.class-search-bar{
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  right: 310px;
+}

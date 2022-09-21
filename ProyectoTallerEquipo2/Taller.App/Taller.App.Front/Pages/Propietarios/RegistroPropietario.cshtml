@@ -1,0 +1,126 @@
+﻿@page
+@model Taller.App.Front.Pages.RegistroPropietarioModel
+@{
+}
+
+
+<form action="">
+
+    <h3 class="text-center">Datos propietario</h3>
+    <br>
+    <h6>Los campos con (*) son obligatorios</h6>
+
+    <div class="container text-center mt-4">
+
+        <div class="row">
+            <div class="col">
+                <label for="exampleFormControlInput1" class="form-label">Cédula *</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="col">
+                <label for="exampleFormControlTextarea1" class="form-label">Nombre *</label>
+                <input type="text" class="form-control" id="exampleFormControlTextarea1">
+            </div>
+            <div class="col">
+                <label for="entradaApellidos" class="form-label">Apellidos *</label>
+                <input type="text" class="form-control" id="entradaApellidos" rows="3">
+            </div>
+            <div class="dropdown col">
+                <label for="exampleFormControlInput1" class="form-label">Ciudad</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected value="">Seleccione</option>
+                    @foreach (string item in Model.ciudades)
+                    {
+                        <option value="3">@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label for="entradaCelular" class="form-label">Número de celular *</label>
+                <input type="text" class="form-control" id="entradaCelular" rows="3">
+            </div>
+
+            <div class="col">
+                <label for="entradaFechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="entradaFechaNacimiento" rows="3">
+            </div>
+            <div class="col">
+                <label for="entradaCorreo" class="form-label">Correo electrónico *</label>
+                <input type="text" class="form-control" id="entradaCorreo" rows="3" placeholder="ejemplo@gmail.com">
+            </div>
+        </div>
+    </div>
+
+    <hr class="border border-primary border-3 opacity-75">
+
+    <h3 class="text-center">Datos Vehículo</h3>
+
+    <div class="container text-center">
+
+        <div class="row my-4">
+            <div class="col">
+                <label for="entradaPlaca" class="form-label">Placa *</label>
+                <input type="text" class="form-control" id="entradaPlaca">
+            </div>
+
+            <div class="dropdown col">
+                <label for="entradaTipo" class="form-label">Tipo *</label>
+                <select class="form-select" id="entradaTipo" aria-label="Default select example">
+                    <option selected value="">Seleccione</option>
+                    @foreach (string item in Model.tiposVehiculo)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col">
+                <label for="entradaMarca" class="form-label">Marca *</label>
+                <input type="text" class="form-control" id="entradaMarca">
+            </div>
+        </div>
+
+        <div class="row my-4">
+            <div class="col">
+                <label for="entradaModelo" class="form-label">Modelo (año) *</label>
+                <input type="number" class="form-control" id="entradaModelo">
+            </div>
+
+            <div class="col">
+                <label for="entradaNumeroPersonas" class="form-label">Número de personas *</label>
+                <input type="number" class="form-control" id="entradaNumeroPersonas">
+            </div>
+
+            <div class="col">
+                <label for="entradaCilindraje" class="form-label">Cilindraje *</label>
+                <input type="number" class="form-control" id="entradaCilindraje">
+            </div>
+
+            <div class="dropdown col">
+                <label for="entradaPais" class="form-label">País</label>
+                <select class="form-select" id="entradaPais" aria-label="Default select example">
+                    <option selected value="">Seleccione</option>
+                    @foreach (string item in Model.paises)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="">
+            <label for="entradaObservaciones" class="form-label">Observaciones</label>
+            <textarea type="text" class="form-control" id="entradaObservaciones" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary my-4 mx-auto" style="min-width: 30rem">
+            Guardar
+        </button>
+    </div>
+
+
+</form>

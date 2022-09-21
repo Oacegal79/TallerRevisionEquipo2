@@ -1,0 +1,92 @@
+﻿@page
+@model Taller.App.Front.Pages.ListadoVehiculoDetalleModel
+@{
+}
+
+<head>
+    <script languague="javascript">
+        let valor ="";
+        function validarFormulario() {
+            valor = document.getElementById("id_placa").value.toUpperCase();
+            var letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            if (valor.length < 6 || valor.length > 6) {
+                alert ('La longitud para el valor placa debe ser de 6 caracteres');
+                return false;
+            }
+            if (!(/^[A-Z]{3}\d{3}$/.test(valor))) {
+                    alert ('El valor de la placa debe tener 3 letras y 3 numeros');
+                return false;
+            }
+            div = document.getElementById('resultado');
+            div.style.display = '';
+        }
+        function ocultarTabla() {
+        div = document.getElementById('resultado');
+        div.style.display = 'none';
+  }
+    </script>
+
+</head>
+
+<h3>
+    @Model.titulo
+</h3>
+
+<form action="" name="formulario">
+
+    <div class="d-flex flex-row">
+        <div class="mb-3 me-3">
+            <label for="id_placa" class="form-label">Placa</label>
+            <input type="text" class="form-control" id="id_placa" placeholder="" minlength="6" maxlength="6" required>
+        </div>
+
+    </div>
+    <div class="mb-1 me-3">
+        <button type="button" class="btn btn-secondary  btn-sm"
+            onclick="javascript:validarFormulario();">Consultar</button>
+         <button type="reset" class="btn btn-secondary  btn-sm" onclick="javascript:ocultarTabla();">Limpiar</button>
+    </div>
+
+</form>
+
+<div id="resultado" style="display:none;">
+    <hr class=" border border-primary border-3 opacity-75">
+
+    <h3>Detalles del Vehículo</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Placa</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Cilindraje</th>
+                <th scope="col">País Origen</th>
+                <th scope="col">Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (VehicDetalle m in Model.listaVehiculosDetallado)
+            {
+                <tr>
+                    
+                    @if (m.placa == "VCT979")
+                    {
+                        <td>@m.placa</td>
+                        <td>@m.tipo</td>
+                        <td>@m.marca</td>
+                        <td>@m.modelo</td>
+                        <td>@m.capacidad</td>
+                        <td>@m.cilindraje</td>
+                        <td>@m.paisOrigen</td>
+                        <td>@m.descripcion</td>
+                    }
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

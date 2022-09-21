@@ -1,0 +1,39 @@
+﻿@page
+@model Taller.App.Front.Pages.ListadoVehiculoModel
+@{
+}
+
+<h3>
+    @Model.titulo
+</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Placa</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Capacidad</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (Vehic m in Model.listaVehiculos)
+        {
+            <tr>
+                @if(m.placa == ""){
+                    <td>@m.placa</td>
+                } else {
+                    <td>@m.placa</td>
+                }
+                <td>@m.tipo</td>
+                <td>@m.marca</td>
+                <td>@m.modelo</td>
+                <td>@m.capacidad</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
