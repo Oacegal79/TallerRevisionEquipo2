@@ -186,16 +186,11 @@ namespace Taller.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RevisionId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Tipo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RepuestoId");
-
-                    b.HasIndex("RevisionId");
 
                     b.ToTable("Repuestos");
                 });
@@ -215,20 +210,21 @@ namespace Taller.App.Persistencia.Migrations
 
                     b.Property<string>("MecanicoId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observaciones")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RepuestoId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("VehiculoId")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RevisionId");
-
-                    b.HasIndex("MecanicoId");
-
-                    b.HasIndex("VehiculoId");
 
                     b.ToTable("Revisiones");
                 });
@@ -244,7 +240,7 @@ namespace Taller.App.Persistencia.Migrations
 
                     b.Property<string>("ClienteId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -276,61 +272,7 @@ namespace Taller.App.Persistencia.Migrations
 
                     b.HasKey("VehiculoId");
 
-                    b.HasIndex("ClienteId");
-
                     b.ToTable("Vehiculos");
-                });
-
-            modelBuilder.Entity("Taller.App.Dominio.Entidades.Repuesto", b =>
-                {
-                    b.HasOne("Taller.App.Dominio.Entidades.Revision", "Revision")
-                        .WithMany("Repuestos")
-                        .HasForeignKey("RevisionId");
-
-                    b.Navigation("Revision");
-                });
-
-            modelBuilder.Entity("Taller.App.Dominio.Entidades.Revision", b =>
-                {
-                    b.HasOne("Taller.App.Dominio.Entidades.Mecanico", "Mecanico")
-                        .WithMany()
-                        .HasForeignKey("MecanicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Taller.App.Dominio.Entidades.Vehiculo", "Vehiculo")
-                        .WithMany("Revisiones")
-                        .HasForeignKey("VehiculoId");
-
-                    b.Navigation("Mecanico");
-
-                    b.Navigation("Vehiculo");
-                });
-
-            modelBuilder.Entity("Taller.App.Dominio.Entidades.Vehiculo", b =>
-                {
-                    b.HasOne("Taller.App.Dominio.Entidades.Cliente", "Cliente")
-                        .WithMany("Vehiculos")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("Taller.App.Dominio.Entidades.Cliente", b =>
-                {
-                    b.Navigation("Vehiculos");
-                });
-
-            modelBuilder.Entity("Taller.App.Dominio.Entidades.Revision", b =>
-                {
-                    b.Navigation("Repuestos");
-                });
-
-            modelBuilder.Entity("Taller.App.Dominio.Entidades.Vehiculo", b =>
-                {
-                    b.Navigation("Revisiones");
                 });
 #pragma warning restore 612, 618
         }
