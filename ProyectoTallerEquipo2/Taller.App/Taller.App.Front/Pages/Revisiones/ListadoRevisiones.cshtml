@@ -4,8 +4,10 @@
 }
 
 <div class="class-contain-title">
-    <h4>Adicionar una Revisión<i class="bi bi-plus-square-fill class-icon-add" title="Agregar Revisión"
-            data-bs-toggle="modal" data-bs-target="#idModalMecanico"></i></h4>
+    <form method="post">
+    <h4>Adicionar una Revisión <i class="bi bi-plus-square-fill class-icon-add" title="Agregar Revisión"
+            data-bs-toggle="modal" data-bs-target="#idModalRevision" @* asp-page-handler="ObtenerMecanicos" *@></i></h4>
+    </form>
     <form class="form-inline class-search-bar">
         <input type="search" class="form-control mr-sm-2" id="inputBuscar" placeholder="Buscar">
         <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Buscar</button>
@@ -24,7 +26,7 @@
                     <th scope="col">Observaciones</th>
                     <th scope="col">Id Vehiculo</th>
                     <th scope="col">Id Mecanico</th>
-                    <th scope="col">Id Respuesto</th>
+                    <th scope="col">Id Repuesto</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -52,11 +54,11 @@
         </table>
     </form>
 </div>
-<div class="modal fade" id="idModalMecanico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="idModalRevision" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar un Mecanico</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar una Revisión</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -88,25 +90,35 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="entradaVehiculoId" class="form-label col-form-label">Id Vehiculo *</label>
-                                <input type="date" class="form-control" id="entradaVehiculoId" rows="3"
+                                <input type="text" class="form-control" id="entradaVehiculoId" rows="3"
                                     asp-for="@Model.revisionActual.VehiculoId" name="VehiculoId" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <label for="entradaVehiculoId" class="form-label col-form-label">Id Mecanico *</label>
-                                <input type="text" class="form-control" id="entradaVehiculoId" rows="3"
-                                    asp-for="@Model.revisionActual.MecanicoId" name="MecanicoId" required>
+                                <label for="entradaVehiculoId" class="form-label col-form-label">Mecanico *</label>
+                                <select class="form-select" id="entradaNivelEstudios" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.mecanicoActual.MecanicoId" name="MecanicoId" required>
+                                    @foreach (var m in @Model.listaMecanicos)
+                                    {
+                                        <option value="@m.MecanicoId">@m.MecanicoId - @m.Nombre @m.Apellido</option>
+                                    }
+                                    </select>
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="entradaRepuestoId" class="form-label col-form-label">Id Repuesto *</label>
-                                <input type="text" class="form-control" id="entradaRepuestoId" rows="3"
-                                    asp-for="@Model.revisionActual.RepuestoId" name="RepuestoId" required>
+                                <label for="entradaRepuestoId" class="form-label col-form-label">Repuesto *</label>
+                                <select class="form-select" id="entradaRepuestoId" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.repuestoActual.RepuestoId" name="RepuestoId" required>
+                                    @foreach (var m in @Model.listaRepuestos)
+                                    {
+                                        <option value="@m.RepuestoId">@m.RepuestoId - @m.Nombre</option>
+                                    }
+                                    </select>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                 <button type="submit" class="btn btn-primary"
-                                    asp-page-handler="AgregarMecanico">Agregar</button>
+                                    asp-page-handler="AgregarRevision">Agregar</button>
                             </div>
                 </form>
             </div>

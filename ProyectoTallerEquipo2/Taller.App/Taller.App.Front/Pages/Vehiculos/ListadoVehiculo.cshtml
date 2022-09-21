@@ -3,37 +3,160 @@
 @{
 }
 
-<h3>
-    @Model.titulo
-</h3>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Placa</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Marca</th>
-            <th scope="col">Modelo</th>
-            <th scope="col">Capacidad</th>
-        </tr>
-    </thead>
-    <tbody>
-
-
-        @foreach (Vehic m in Model.listaVehiculos)
-        {
-            <tr>
-                @if(m.placa == ""){
-                    <td>@m.placa</td>
-                } else {
-                    <td>@m.placa</td>
+<div class="class-contain-title">
+    <form method="post">
+        <h4>Adicionar una Revisión <i class="bi bi-plus-square-fill class-icon-add" title="Agregar Revisión"
+                data-bs-toggle="modal" data-bs-target="#idModalVehiculo" @* asp-page-handler="ObtenerMecanicos" *@></i>
+        </h4>
+    </form>
+    <form class="form-inline class-search-bar">
+        <input type="search" class="form-control mr-sm-2" id="inputBuscar" placeholder="Buscar">
+        <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Buscar</button>
+    </form>
+</div>
+<hr class="border border-primary border-3 opacity-75">
+<h3>Datos Revisiones</h3>
+<div>
+    <form class="">
+        <table class="table">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Id</th>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Numero Pasajeros</th>
+                    <th scope="col">Cilindraje</th>
+                    <th scope="col">Pais</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ve in @Model.listaVehiculos)
+                {
+                    <tr>
+                        <td>@ve.VehiculoId</td>
+                        <td>@ve.Placa</td>
+                        <td>@ve.Tipo</td>
+                        <td>@ve.Marca</td>
+                        <td>@ve.Modelo</td>
+                        <td>@ve.NumeroPasajeros</td>
+                        <td>@ve.Cilindraje</td>
+                        <td>@ve.Pais</td>
+                        <td>@ve.Descripcion</td>
+                        <td>@ve.ClienteId</td>
+                        <td style="display: flex;">
+                            <i class="bi bi-pencil-fill class-icon-edit"></i>
+                            <form method="post">
+                                <button class="bi bi-trash3-fill class-icon-del" asp-route-id="@ve.VehiculoId"
+                                asp-page-handler="EliminarVehiculo" type="submit"></button>
+                            </form>
+                        </td>
+                    </tr>
                 }
-                <td>@m.tipo</td>
-                <td>@m.marca</td>
-                <td>@m.modelo</td>
-                <td>@m.capacidad</td>
-            </tr>
-        }
-
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="modal fade" id="idModalVehiculo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar un Vehículo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="mb-3 col-4">
+                            <label for="entradaId" class="form-label col-form-label">Id *</label>
+                            <input type="number" class="form-control" id="entradaId" name="VehiculoId" required>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaPlaca" class="form-label col-form-label">Placa *</label>
+                                <input type="text" class="form-control" id="entradaPlaca"
+                                    asp-for="@Model.vehiculoActual.Placa" name="Placa" required>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="entradaTipo" class="form-label col-form-label">Tipo Vehículo *</label>
+                                <select class="form-select" id="entradaTipo" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.vehiculoActual.Tipo" name="Tipo" required>
+                                    @foreach (string item in Model.tiposVehiculo)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaMarca" class="form-label col-form-label">Marca *</label>
+                                <input type="text" class="form-control" id="entradaMarca" rows="3"
+                                    asp-for="@Model.vehiculoActual.Marca" name="Marca" required>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="entradaModelo" class="form-label col-form-label">Modelo *</label>
+                                <input type="number" class="form-control" id="entradaModelo" rows="3"
+                                    asp-for="@Model.vehiculoActual.Modelo" name="Modelo" min="1900" max="2999" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaNumeroPasajeros" class="form-label col-form-label">Número de
+                                    Pasajeros *</label>
+                                <input type="number" class="form-control" id="entradaNumeroPasajeros" rows="3"
+                                    asp-for="@Model.vehiculoActual.NumeroPasajeros" name="NumeroPasajeros" min="1"
+                                    max="99" required>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="entradaCilindraje" class="form-label col-form-label">Número de
+                                    Pasajeros *</label>
+                                <input type="number" class="form-control" id="entradaCilindraje" rows="3"
+                                    asp-for="@Model.vehiculoActual.Cilindraje" name="Cilindraje" min="0000" max="9999"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaPais" class="form-label col-form-label">Pais Origen *</label>
+                                <select class="form-select" id="entradaPais" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.vehiculoActual.Pais" name="Pais" required>
+                                    @foreach (string item in Model.paises)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="entradaDescripcion" class="form-label col-form-label">Descripción *</label>
+                                <input type="text" class="form-control" id="entradaDescripcion" rows="3"
+                                    asp-for="@Model.vehiculoActual.Descripcion" name="Descripcion" min="0000" max="9999"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaCliente" class="form-label col-form-label">Pais Origen *</label>
+                                <select class="form-select" id="entradaCliente" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.clienteActual.ClienteId" name="ClienteId" required>
+                                    @foreach (var m in @Model.listaClientes)
+                                    {
+                                        <option value="@m.ClienteId">@m.ClienteId - @m.Nombre @m.Apellido</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary"
+                                asp-page-handler="AgregarRevision">Agregar</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
