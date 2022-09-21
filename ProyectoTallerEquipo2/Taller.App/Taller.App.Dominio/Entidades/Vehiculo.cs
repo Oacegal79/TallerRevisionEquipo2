@@ -16,5 +16,6 @@ namespace Taller.App.Dominio.Entidades
         public string Cilindraje {get; set;}
         public string Pais {get; set;}
         public string Descripcion {get; set;}
+        public string ClienteId {get; set;}
     }
 }

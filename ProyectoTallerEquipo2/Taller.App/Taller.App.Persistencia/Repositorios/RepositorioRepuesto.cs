@@ -7,7 +7,7 @@ using Taller.App.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
-namespace Taller.App.Persistencia.AppRepositorios
+namespace Taller.App.Persistencia
 {
     public class RepositorioRepuesto
     {
