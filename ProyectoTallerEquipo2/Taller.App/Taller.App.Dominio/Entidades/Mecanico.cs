@@ -10,7 +10,5 @@ namespace Taller.App.Dominio.Entidades
         public string MecanicoId {get; set;}
         public string NivelEstudio {get; set;}
         public string Direccion {get; set;}
-
-        public string Revision {get; set;}
     }
 }
