@@ -28,7 +28,7 @@ namespace Taller.App.Front.Pages
 
         public List<Vehiculo> listaVehiculos = new List<Vehiculo>();
         public List<Cliente> listaClientes = new List<Cliente>();
-        public Mecanico vehiculoActual;
+        public Vehiculo vehiculoActual;
         public Cliente clienteActual;
 
         public void OnGet()

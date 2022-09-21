@@ -18,18 +18,24 @@ namespace Taller.App.Front.Pages
         private static RepositorioRepuesto repoRepuesto = new RepositorioRepuesto(
         new Persistencia.ContextDb()
         );
+        private static RepositorioVehiculo repoVehiculo = new RepositorioVehiculo(
+        new Persistencia.ContextDb()
+        );
         public List<Revision> listaRevisiones = new List<Revision>();
         public List<Mecanico> listaMecanicos = new List<Mecanico>();
         public List<Repuesto> listaRepuestos = new List<Repuesto>();
+        public List<Vehiculo> listaVehiculos = new List<Vehiculo>();
         public Revision revisionActual;
         public Mecanico mecanicoActual;
         public Repuesto repuestoActual;
+        public Vehiculo vehiculoActual;
 
         public void OnGet()
         {
             this.ObtenerRevisiones();
             this.ObtenerMecanicos();
             this.ObtenerRepuestos();
+            this.ObtenerVehiculos();
         }
 
         public void OnPostAgregarRevision(Revision revision)
@@ -40,6 +46,7 @@ namespace Taller.App.Front.Pages
                 this.ObtenerRevisiones();
                 this.ObtenerMecanicos();
                 this.ObtenerRepuestos();
+                this.ObtenerVehiculos();
             }
             catch
             {
@@ -100,6 +107,19 @@ namespace Taller.App.Front.Pages
                     Tipo = repuesto.Tipo,
                     Nombre = repuesto.Nombre,
                     Cantidad = repuesto.Cantidad
+                });
+            }
+        }
+        private void ObtenerVehiculos()
+        {
+            foreach (Vehiculo vehiculo in repoVehiculo.ObtenerVehiculos())
+            {
+                this.listaVehiculos.Add(new Vehiculo
+                {
+                    VehiculoId = vehiculo.VehiculoId,
+                    Placa = vehiculo.Placa,
+                    Modelo = vehiculo.Modelo,
+                    Marca = vehiculo.Marca
                 });
             }
         }

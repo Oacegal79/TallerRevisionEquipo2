@@ -89,9 +89,14 @@
                                     asp-for="@Model.revisionActual.Observaciones" name="Observaciones" required>
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="entradaVehiculoId" class="form-label col-form-label">Id Vehiculo *</label>
-                                <input type="text" class="form-control" id="entradaVehiculoId" rows="3"
-                                    asp-for="@Model.revisionActual.VehiculoId" name="VehiculoId" required>
+                                <label for="entradaVehiculoId" class="form-label col-form-label">Vehiculo *</label>
+                                <select class="form-select" id="entradaVehiculoId" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.vehiculoActual.VehiculoId" name="VehiculoId" required>
+                                    @foreach (var v in @Model.listaVehiculos)
+                                    {
+                                        <option value="@v.VehiculoId">@v.VehiculoId - @v.Placa @v.Modelo</option>
+                                    }
+                                    </select>
                             </div>
                         </div>
                         <div class="row">

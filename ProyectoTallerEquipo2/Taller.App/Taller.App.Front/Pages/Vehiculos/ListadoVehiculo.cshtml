@@ -5,7 +5,7 @@
 
 <div class="class-contain-title">
     <form method="post">
-        <h4>Adicionar una Revisión <i class="bi bi-plus-square-fill class-icon-add" title="Agregar Revisión"
+        <h4>Adicionar un Vehículo <i class="bi bi-plus-square-fill class-icon-add" title="Agregar Revisión"
                 data-bs-toggle="modal" data-bs-target="#idModalVehiculo" @* asp-page-handler="ObtenerMecanicos" *@></i>
         </h4>
     </form>
@@ -15,7 +15,7 @@
     </form>
 </div>
 <hr class="border border-primary border-3 opacity-75">
-<h3>Datos Revisiones</h3>
+<h3>Datos Vehículos</h3>
 <div>
     <form class="">
         <table class="table">
@@ -113,8 +113,7 @@
                                     max="99" required>
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="entradaCilindraje" class="form-label col-form-label">Número de
-                                    Pasajeros *</label>
+                                <label for="entradaCilindraje" class="form-label col-form-label">Cilindraje *</label>
                                 <input type="number" class="form-control" id="entradaCilindraje" rows="3"
                                     asp-for="@Model.vehiculoActual.Cilindraje" name="Cilindraje" min="0000" max="9999"
                                     required>
@@ -153,7 +152,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-primary"
-                                asp-page-handler="AgregarRevision">Agregar</button>
+                                asp-page-handler="AgregarVehiculo">Agregar</button>
                         </div>
                 </form>
             </div>
