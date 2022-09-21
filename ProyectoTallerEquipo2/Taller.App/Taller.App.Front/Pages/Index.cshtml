@@ -4,6 +4,27 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bienvenidos a Nuestro Taller</h1>
+<div class="vista-principal"
+    style="background-image: url('https://p4.wallpaperbetter.com/wallpaper/211/491/776/automotive-beetle-black-and-white-buggy-wallpaper-preview.jpg');">
+
+    <p class="vp_p"><span class="vp_span">Bienvenido al Taller Grupo 8 Equipo 2</span></p>
+
+    <form class="formulario-inicio-sesion row g-3">
+        <div class="row-md-1">
+            <label for="entradaUsuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="entradaUsuario">
+        </div>
+        <div class="row-md-1">
+            <label for="entradaContrasenia" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="entradaContrasenia">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+
+        <hr>
+
+        <p><span>¿No tienes usuario? </span><a href=""> Registrate</a></p>
+        <a href="">¿Recuperar contrseña?</a>
+    </form>
 </div>
