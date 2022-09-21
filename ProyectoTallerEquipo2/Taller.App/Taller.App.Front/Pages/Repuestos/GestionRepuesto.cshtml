@@ -1,0 +1,97 @@
+﻿@page
+@model Taller.App.Front.Pages.GestionRepuestoModel
+@{
+}
+<div class="class-contain-title">
+    <h4>Adicionar un Repuesto <i class="bi bi-plus-square-fill class-icon-add" title="Agregar Repuesto"
+            data-bs-toggle="modal" data-bs-target="#idModalRepuesto"></i></h4>
+    <form class="form-inline class-search-bar">
+        <input type="search" class="form-control mr-sm-2" id="inputBuscar" placeholder="Buscar">
+        <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Buscar</button>
+    </form>
+</div>
+<hr class="border border-primary border-3 opacity-75">
+<h3>Datos Repuestos</h3>
+<div>
+    <form class="">
+        <table class="table">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Id</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in @Model.listaRepuestos)
+                {
+                    <tr>
+                        <td>@m.RepuestoId</td>
+                        <td>@m.Tipo</td>
+                        <td>@m.Nombre</td>
+                        <td>@m.Cantidad</td>
+                        <td style="display: flex;">
+                            <i class="bi bi-pencil-fill class-icon-edit"></i>
+                            <form method="post">
+                                <button class="bi bi-trash3-fill class-icon-del" asp-route-id="@m.RepuestoId"
+                                asp-page-handler="EliminarRepuesto" type="submit"></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="modal fade" id="idModalRepuesto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar un Repuesto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="mb-3 col-4">
+                            <label for="entradaId" class="form-label col-form-label">Id *</label>
+                            <input type="text" class="form-control" id="entradaId" name="RepuestoId" required>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaNombre" class="form-label col-form-label">Nombre *</label>
+                                <input type="text" class="form-control" id="entradaNombre"
+                                    asp-for="@Model.repuestoActual.Nombre" name="Nombre" required>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="entradaTipo" class="form-label col-form-label">Tipo *</label>
+                                <select class="form-select" id="entradaTipo" aria-label="Selecciona una Opción"
+                                    asp-for="@Model.repuestoActual.Tipo" name="Tipo" required>
+                                    <option value="Genérico">Genérico</option>
+                                    <option value="Original">Original </option>
+                                    <option value="Tornillos">Tornillos</option>
+                                    <option value="Piezas">Piezas</option>
+                                    <option value="Lujo">Lujo</option>
+                                    <option value="Llantas">Llantas</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="entradaCantidad" class="form-label col-form-label">Cantidad *</label>
+                                <input type="number" class="form-control" id="entradaCantidad" rows="3"
+                                    asp-for="@Model.repuestoActual.Cantidad" name="Cantidad" min="1" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary"
+                                asp-page-handler="AgregarRepuesto">Agregar</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,13 +10,32 @@ namespace Taller.App.Front.Pages
         private static RepositorioRevision repoRevision = new RepositorioRevision(
            new Persistencia.ContextDb()
        );
-        public List<Revision> listaRevisiones = new List<Revision>();
 
+        private static RepositorioMecanico repoMecanico = new RepositorioMecanico(
+            new Persistencia.ContextDb()
+        );
+
+        private static RepositorioRepuesto repoRepuesto = new RepositorioRepuesto(
+        new Persistencia.ContextDb()
+        );
+        private static RepositorioVehiculo repoVehiculo = new RepositorioVehiculo(
+        new Persistencia.ContextDb()
+        );
+        public List<Revision> listaRevisiones = new List<Revision>();
+        public List<Mecanico> listaMecanicos = new List<Mecanico>();
+        public List<Repuesto> listaRepuestos = new List<Repuesto>();
+        public List<Vehiculo> listaVehiculos = new List<Vehiculo>();
         public Revision revisionActual;
+        public Mecanico mecanicoActual;
+        public Repuesto repuestoActual;
+        public Vehiculo vehiculoActual;
 
         public void OnGet()
         {
             this.ObtenerRevisiones();
+            this.ObtenerMecanicos();
+            this.ObtenerRepuestos();
+            this.ObtenerVehiculos();
         }
 
         public void OnPostAgregarRevision(Revision revision)
@@ -25,6 +44,9 @@ namespace Taller.App.Front.Pages
             {
                 repoRevision.AgregarRevision(revision);
                 this.ObtenerRevisiones();
+                this.ObtenerMecanicos();
+                this.ObtenerRepuestos();
+                this.ObtenerVehiculos();
             }
             catch
             {
@@ -62,7 +84,45 @@ namespace Taller.App.Front.Pages
             }
         }
 
+        private void ObtenerMecanicos()
+        {
+            foreach (Mecanico mecanico in repoMecanico.ObtenerMecanicos())
+            {
+                this.listaMecanicos.Add(new Mecanico
+                {
+                    MecanicoId = mecanico.MecanicoId,
+                    Nombre = mecanico.Nombre,
+                    Apellido = mecanico.Apellido
+                });
+            }
 
+        }
+        private void ObtenerRepuestos()
+        {
+            foreach (Repuesto repuesto in repoRepuesto.ObtenerRepuestos())
+            {
+                this.listaRepuestos.Add(new Repuesto
+                {
+                    RepuestoId = repuesto.RepuestoId,
+                    Tipo = repuesto.Tipo,
+                    Nombre = repuesto.Nombre,
+                    Cantidad = repuesto.Cantidad
+                });
+            }
+        }
+        private void ObtenerVehiculos()
+        {
+            foreach (Vehiculo vehiculo in repoVehiculo.ObtenerVehiculos())
+            {
+                this.listaVehiculos.Add(new Vehiculo
+                {
+                    VehiculoId = vehiculo.VehiculoId,
+                    Placa = vehiculo.Placa,
+                    Modelo = vehiculo.Modelo,
+                    Marca = vehiculo.Marca
+                });
+            }
+        }
 
     }
 }
