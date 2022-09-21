@@ -44,5 +44,14 @@ button.accept-policy {
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px;
+  line-height: 25px;
+  background: linear-gradient(90deg,#3d5f70,#2b536b, 25%,#0d5580);
+}
+
+#logo {
+  width: 120px;
+}
+
+#home {
+  width: 40px;
 }

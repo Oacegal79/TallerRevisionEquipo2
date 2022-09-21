@@ -15,7 +15,8 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 me-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Taller</a>
+                <a class="navbar-brand" ><img id="logo" src="https://franquicia.automotorsmx.com/wp-content/uploads/2021/01/cropped-taller-automotriz-en-queretaro-automotors-2.png" alt="logo taller"></a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index"><img id="home" src="https://cdn.icon-icons.com/icons2/1302/PNG/128/webpagehome_85808.png" alt="logo pagina inicio"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,14 +26,11 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Vehículo
+                                    Clientes
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-page="/Vehiculos/ListadoVehiculo">Listado Vehículos</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-page="/Vehiculos/ListadoVehiculoDetalle">Consultar Vehículo</a>
+                                        <a class="nav-link text-dark" asp-area=""asp-page="/Propietarios/RegistroPropietario">Gestión Propietarios</a>
                                     </li>
                                 </ul>
                             </div>
@@ -40,18 +38,16 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Clientes
+                                    Vehículo
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="nav-link text-dark" asp-area=""asp-page="/Propietarios/RegistroPropietario">Registro Propietario</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-dark" href="#">Listado Propietarios</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Vehiculos/ListadoVehiculo">Gestión Vehículos</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
+                        
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,7 +60,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
+@*                         <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Notificaciones
@@ -72,6 +68,18 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a class="nav-link text-dark" asp-area="" asp-page="/Notificaciones/ListadoNotificaciones">Notificaciones</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> *@
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Repuestos
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Repuestos/GestionRepuesto">Gestión Repuestos</a>
                                     </li>
                                 </ul>
                             </div>
@@ -83,14 +91,12 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-page="/Revisiones/ListadoRevisiones">Registro Revisiones</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-dark" href="#">Consulta Revisiones</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Revisiones/ListadoRevisiones">Gestión Revisiones</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -104,8 +110,10 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Taller.App.Front - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        <div class="container-fluid">
+            <div class="row">
+               &copy; 2022 - Taller.App.Front - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
         </div>
     </footer>
 
