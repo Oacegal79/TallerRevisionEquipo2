@@ -34,11 +34,11 @@ namespace Taller.App.Persistencia
 
         }
 
-        protected override void OnModelCreating (ModelBuilder modelBuilder){
-            modelBuilder.Entity<Revision>()
-            .HasOne(b => b.Mecanico)
-            .WithOne(c => c.Revision);
-        }
+        // protected override void OnModelCreating (ModelBuilder modelBuilder){
+        //     modelBuilder.Entity<Revision>()
+        //     .HasOne(b => b.Mecanico)
+        //     .WithOne(c => c.Revision);
+        // }
 
     }
 }
