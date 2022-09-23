@@ -48,7 +48,6 @@ namespace Taller.App.Front.Pages
 
         public void OnPostEliminarCliente(string id)
         {
-            Console.WriteLine("llego" + id);
             try
             {
                 repoCliente.EliminarCliente(id);

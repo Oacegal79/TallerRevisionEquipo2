@@ -29,14 +29,15 @@ namespace Taller.App.Persistencia
             return this.dbContext.Clientes;
         }
 
-        public Cliente BuscarClientes(string idCliente)
+        public Cliente BuscarCliente(string idCliente)
         {
             return this.dbContext.Clientes.FirstOrDefault(re => re.ClienteId == idCliente);
         }
 
-        public void EditarCliente(Cliente clienteNuevo, string idCliente)
+        public void EditarCliente(Cliente clienteNuevo)
         {
-            var clienteActual = this.dbContext.Clientes.FirstOrDefault(m => m.ClienteId == idCliente);
+            var clienteActual = this.dbContext.Clientes.FirstOrDefault(c => c.ClienteId == clienteNuevo.ClienteId);
+
             if (clienteActual != null)
             {
                 clienteActual.Nombre = clienteNuevo.Nombre;
