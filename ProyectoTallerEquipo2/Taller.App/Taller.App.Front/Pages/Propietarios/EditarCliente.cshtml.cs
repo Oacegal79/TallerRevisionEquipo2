@@ -36,12 +36,14 @@ namespace Talle.App.Front.Pages
             }
         }
 
-        public IActionResult OnPostEditar()
+        public IActionResult OnPostEditar(Cliente clienteActual, string clienteId)
         {
             try
             {
-                repoCliente.EditarCliente(this.clienteActual);
+                repoCliente.EditarCliente(clienteActual, clienteId);
+                repoCliente.ObtenerClientes();
                 return RedirectToPage("/Propietarios/RegistroPropietario");
+                
 
             }
             catch
