@@ -34,22 +34,24 @@ namespace Taller.App.Persistencia
             return this.dbContext.Clientes.FirstOrDefault(re => re.ClienteId == idCliente);
         }
 
-        public void EditarCliente(Cliente clienteNuevo)
+        public void EditarCliente(Cliente clienteNuevo, string IdCliente)
         {
-            var clienteActual = this.dbContext.Clientes.FirstOrDefault(c => c.ClienteId == clienteNuevo.ClienteId);
-
-            if (clienteActual != null)
+            var clienteTemp = this.dbContext.Clientes.FirstOrDefault(c =>c.ClienteId==IdCliente);
+            if (clienteTemp != null)
             {
-                clienteActual.Nombre = clienteNuevo.Nombre;
-                clienteActual.Apellido = clienteNuevo.Apellido;
-                clienteActual.Telefono = clienteNuevo.Telefono;
-                clienteActual.FechaNacimiento = clienteNuevo.FechaNacimiento;
-                clienteActual.Contrasenia = clienteNuevo.Contrasenia;
-                clienteActual.Rol = clienteNuevo.Rol;
-                clienteActual.CiudadResidencia = clienteNuevo.CiudadResidencia;
-                clienteActual.Correo = clienteNuevo.Correo;
+                clienteTemp.ClienteId = clienteNuevo.ClienteId;
+                clienteTemp.Nombre = clienteNuevo.Nombre;
+                clienteTemp.Apellido = clienteNuevo.Apellido;
+                clienteTemp.Telefono = clienteNuevo.Telefono;
+                clienteTemp.FechaNacimiento = clienteNuevo.FechaNacimiento;
+                clienteTemp.Contrasenia = clienteNuevo.Contrasenia;
+                clienteTemp.Rol = clienteNuevo.Rol;
+                clienteTemp.CiudadResidencia = clienteNuevo.CiudadResidencia;
+                clienteTemp.Correo = clienteNuevo.Correo;
+                
             }
             this.dbContext.SaveChanges();
+            this.ObtenerClientes();
         }
 
         public void EliminarCliente(string idCliente)
