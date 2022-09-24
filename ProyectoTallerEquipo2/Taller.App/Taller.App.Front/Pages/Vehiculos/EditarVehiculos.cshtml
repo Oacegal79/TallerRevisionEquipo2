@@ -1,0 +1,80 @@
+﻿@page
+@model Talle.App.Front.Pages.EditarVehiculosModel
+@{
+    <form method="post">
+        <div class="row">
+            <div class="mb-3 col-4">
+                <label for="entradaId" class="form-label col-form-label">Id *</label>
+                <input type="number" class="form-control" id="entradaId" name="VehiculoId" required asp-for="@Model.vehiculoActual.VehiculoId" disabled="true">
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaPlaca" class="form-label col-form-label">Placa *</label>
+                    <input type="text" class="form-control" id="entradaPlaca" asp-for="@Model.vehiculoActual.Placa"
+                        name="Placa" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaTipo" class="form-label col-form-label">Tipo Vehículo *</label>
+                    <select class="form-select" id="entradaTipo" aria-label="Selecciona una Opción"
+                        asp-for="@Model.vehiculoActual.Tipo" name="Tipo" required>
+                        @foreach (string item in Model.tiposVehiculo)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaMarca" class="form-label col-form-label">Marca *</label>
+                    <input type="text" class="form-control" id="entradaMarca" rows="3" asp-for="@Model.vehiculoActual.Marca"
+                        name="Marca" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaModelo" class="form-label col-form-label">Modelo *</label>
+                    <input type="number" class="form-control" id="entradaModelo" rows="3"
+                        asp-for="@Model.vehiculoActual.Modelo" name="Modelo" min="1900" max="2999" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaNumeroPasajeros" class="form-label col-form-label">Número de
+                        Pasajeros *</label>
+                    <input type="number" class="form-control" id="entradaNumeroPasajeros" rows="3"
+                        asp-for="@Model.vehiculoActual.NumeroPasajeros" name="NumeroPasajeros" min="1" max="99" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaCilindraje" class="form-label col-form-label">Cilindraje *</label>
+                    <input type="number" class="form-control" id="entradaCilindraje" rows="3"
+                        asp-for="@Model.vehiculoActual.Cilindraje" name="Cilindraje" min="0000" max="9999" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaPais" class="form-label col-form-label">Pais Origen *</label>
+                    <select class="form-select" id="entradaPais" aria-label="Selecciona una Opción"
+                        asp-for="@Model.vehiculoActual.Pais" name="Pais" required>
+                        @foreach (string item in Model.paises)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaDescripcion" class="form-label col-form-label">Descripción *</label>
+                    <input type="text" class="form-control" id="entradaDescripcion" rows="3"
+                        asp-for="@Model.vehiculoActual.Descripcion" name="Descripcion" min="0000" max="9999" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaCliente" class="form-label col-form-label">Propietario *</label>
+                    <input type="text" class="form-control" id="entradaCliente" disabled="true" asp-for="@Model.clienteActual.Nombre">
+                </div>
+            </div>
+        </div>
+        <a asp-page="/Vehiculos/ListadoVehiculo" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary" asp-page-handler="Editar"
+            asp-route-vehiculoId="@Model.vehiculoActual.VehiculoId">Editar</button>
+    </form>
+}

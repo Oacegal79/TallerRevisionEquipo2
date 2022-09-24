@@ -42,7 +42,9 @@
                         <td>@re.MecanicoId</td>
                         <td>@re.RepuestoId</td>
                         <td style="display: flex;">
-                            <i class="bi bi-pencil-fill class-icon-edit"></i>
+                            <a asp-page="/Revisiones/EditarRevisiones" asp-route-revisionId="@re.RevisionId">
+                                <i class="bi bi-pencil-fill class-icon-edit" title="Editar Revision"></i>
+                            </a>
                             <form method="post">
                                 <button class="bi bi-trash3-fill class-icon-del" asp-route-id="@re.RevisionId"
                                 asp-page-handler="EliminarRevision" type="submit"></button>

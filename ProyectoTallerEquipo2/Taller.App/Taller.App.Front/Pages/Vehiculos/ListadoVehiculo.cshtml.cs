@@ -7,7 +7,7 @@ namespace Taller.App.Front.Pages
 {
     public class ListadoVehiculoModel : PageModel
     {
-         public List<String> ciudades = new List<String>(){
+        public List<String> ciudades = new List<String>(){
             "Bogotá", "Medellín", "Manizales", "Barranquilla"
         };
 
@@ -53,7 +53,6 @@ namespace Taller.App.Front.Pages
 
         public void OnPostEliminarVehiculo(string id)
         {
-            Console.WriteLine("llego" + id);
             try
             {
                 repoVehiculo.EliminarVehiculo(id);

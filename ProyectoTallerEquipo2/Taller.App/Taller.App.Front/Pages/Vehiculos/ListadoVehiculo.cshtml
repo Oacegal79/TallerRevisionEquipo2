@@ -49,7 +49,9 @@
                         <td>@ve.Descripcion</td>
                         <td>@ve.ClienteId</td>
                         <td style="display: flex;">
-                            <i class="bi bi-pencil-fill class-icon-edit"></i>
+                            <a asp-page="/Vehiculos/EditarVehiculos" asp-route-vehiculoId="@ve.VehiculoId">
+                                <i class="bi bi-pencil-fill class-icon-edit" title="Editar Vehiculo"></i>
+                            </a>
                             <form method="post">
                                 <button class="bi bi-trash3-fill class-icon-del" asp-route-id="@ve.VehiculoId"
                                 asp-page-handler="EliminarVehiculo" type="submit"></button>
@@ -139,7 +141,7 @@
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <label for="entradaCliente" class="form-label col-form-label">Pais Origen *</label>
+                                <label for="entradaCliente" class="form-label col-form-label">Propietario *</label>
                                 <select class="form-select" id="entradaCliente" aria-label="Selecciona una Opción"
                                     asp-for="@Model.clienteActual.ClienteId" name="ClienteId" required>
                                     @foreach (var m in @Model.listaClientes)

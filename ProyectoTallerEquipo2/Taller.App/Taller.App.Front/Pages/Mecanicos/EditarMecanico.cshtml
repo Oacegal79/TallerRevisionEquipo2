@@ -1,0 +1,72 @@
+﻿@page
+@model Talle.App.Front.Pages.EditarMecanicoModel
+@{
+    <form method="post">
+        <div class="row">
+            <div class="mb-3 col-4">
+                <label for="entradaId" class="form-label col-form-label">Id *</label>
+                <input type="text" class="form-control" id="entradaId" name="MecanicoId" asp-for="@Model.mecanicoActual.MecanicoId" required disabled="true">
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaNombres" class="form-label col-form-label">Nombres *</label>
+                    <input type="text" class="form-control" id="entradaNombres" asp-for="@Model.mecanicoActual.Nombre"
+                        name="Nombre" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaApellidos" class="form-label col-form-label">Apellidos *</label>
+                    <input type="text" class="form-control" id="entradaApellidos" rows="3"
+                        asp-for="@Model.mecanicoActual.Apellido" name="Apellido" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaCelular" class="form-label col-form-label">Número de celular
+                        *</label>
+                    <input type="text" class="form-control" id="entradaCelular" rows="3"
+                        asp-for="@Model.mecanicoActual.Telefono" name="Telefono" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaFechaNacimiento" class="form-label col-form-label">Fecha de
+                        nacimiento *</label>
+                    <input type="date" class="form-control" id="entradaFechaNacimiento" rows="3"
+                        asp-for="@Model.mecanicoActual.FechaNacimiento" name="FechaNacimiento" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaDireccion" class="form-label col-form-label">Dirección de residencia
+                        *</label>
+                    <input type="text" class="form-control" id="entradaDireccion" rows="3"
+                        asp-for="@Model.mecanicoActual.Direccion" name="Direccion" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaNivelEstudios" class="form-label col-form-label">Nivel de estudios
+                        *</label>
+                    <select class="form-select" id="entradaNivelEstudios" aria-label="Selecciona una Opción"
+                        asp-for="@Model.mecanicoActual.NivelEstudio" name="NivelEstudio" required>
+                        <option value="Bachiller">Bachiller</option>
+                        <option value="Técnico">Técnico</option>
+                        <option value="Tecnólogo">Tecnólogo</option>
+                        <option value="Profesional">Profesional</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="entradaContrasenia" class="form-label">Contraseña *</label>
+                    <input type="password" class="form-control" id="entradaContrasenia" rows="3"
+                        asp-for="@Model.mecanicoActual.Contrasenia" name="Contrasenia" required>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="entradaRol" class="form-label">Rol *</label>
+                    <select class="form-select" id="entradaRol" asp-for="@Model.mecanicoActual.Rol" name="Rol" required>
+                        <option value="Mecánico">Mecánico</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <a asp-page="/Mecanicos/GestionMecanico" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary" asp-page-handler="Editar" asp-route-mecanicoId="@Model.mecanicoActual.MecanicoId">Editar</button>
+    </form>
+}

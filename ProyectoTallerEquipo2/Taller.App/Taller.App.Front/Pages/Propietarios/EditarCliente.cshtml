@@ -1,0 +1,76 @@
+﻿@page
+@model Talle.App.Front.Pages.EditarClienteModel
+@{
+
+    <form method="post">
+        <div class="mb-3 col-4">
+            <label for="entradaIdEditar" class="form-label col-form-label">Id *</label>
+            <input type="text" class="form-control" id="entradaIdEditar" disabled="true"
+                asp-for="@Model.clienteActual.ClienteId" name="ClienteId" required>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label for="entradaNombresEditar" class="form-label col-form-label">Nombres *</label>
+                <input type="text" class="form-control" id="entradaNombresEditar" asp-for="@Model.clienteActual.Nombre"
+                    name="Nombre" required>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="entradaApellidosEditar" class="form-label col-form-label">Apellidos
+                    *</label>
+                <input type="text" class="form-control" id="entradaApellidosEditar" rows="3"
+                    asp-for="@Model.clienteActual.Apellido" name="Apellido" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label for="entradaCelularEditar" class="form-label col-form-label">Número de celular
+                    *</label>
+                <input type="text" class="form-control" id="entradaCelularEditar" rows="3"
+                    asp-for="@Model.clienteActual.Telefono" name="Telefono" required>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="entradaFechaNacimientoEditar" class="form-label col-form-label">Fecha de
+                    nacimiento *</label>
+                <input type="date" class="form-control" id="entradaFechaNacimientoEditar" rows="3"
+                    asp-for="@Model.clienteActual.FechaNacimiento" name="FechaNacimiento" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label for="entradaCorreoEditar" class="form-label col-form-label">Correo Electrónico
+                    *</label>
+                <input type="email" class="form-control" id="entradaCorreoEditar" rows="3"
+                    asp-for="@Model.clienteActual.Correo" name="Correo" required>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="entradaCiudadResidenciaEditar" class="form-label col-form-label">Ciudad de
+                    Residencia *</label>
+                <select class="form-select" id="entradaCiudadResidenciaEditar" aria-label="Selecciona una Opción"
+                    asp-for="@Model.clienteActual.CiudadResidencia" name="CiudadResidencia" required>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Bogotá">Bogotá</option>
+                    <option value="Cali">Cali</option>
+                    <option value="Medellín">Medellín</option>
+                    <option value="Meta">Meta</option>
+                    <option value="Villavicencio">Villavicencio</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label for="entradaContraseniaEditar" class="form-label">Contraseña *</label>
+                <input type="password" class="form-control" id="entradaContraseniaEditar" rows="3"
+                    asp-for="@Model.clienteActual.Contrasenia" name="Contrasenia" required>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="entradaRolEditar" class="form-label">Rol *</label>
+                <select class="form-select" id="entradaRolEditar" asp-for="@Model.clienteActual.Rol" name="Rol" required>
+                    <option value="Cliente">Propietario</option>
+                </select>
+            </div>
+        </div>
+        <a asp-page="/Propietarios/RegistroPropietario" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary" asp-page-handler="Editar" asp-route-clienteId="@Model.clienteActual.ClienteId">Editar</button>
+    </form>
+
+}
