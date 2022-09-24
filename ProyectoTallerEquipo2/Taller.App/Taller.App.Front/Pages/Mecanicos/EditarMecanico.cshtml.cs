@@ -5,9 +5,9 @@ using Taller.App.Dominio.Entidades;
 
 namespace Talle.App.Front.Pages
 {
-    public class EditarClienteModel : PageModel
+    public class EditarMecanicoModel : PageModel
     {
-        private static RepositorioCliente repoCliente = new RepositorioCliente(
+        private static RepositorioMecanico repoMecanico = new RepositorioMecanico(
             new ContextDb()
         );
 
@@ -23,24 +23,24 @@ namespace Talle.App.Front.Pages
             "Bachiller", "Técnico", "Tecnólogo"
         };
 
-        public Cliente clienteActual;
-        public IActionResult OnGet(string clienteId)
+        public Mecanico mecanicoActual;
+        public IActionResult OnGet(string mecanicoId)
         {
             try {
-                clienteActual = repoCliente.BuscarCliente(clienteId);
+                mecanicoActual = repoMecanico.BuscarMecanico(mecanicoId);
                 return Page();
             } catch {
                 return RedirectToPage("./Error");
             }
         }
 
-        public IActionResult OnPostEditar(Cliente clienteActual, string clienteId)
+        public IActionResult OnPostEditar(Mecanico mecanicoActual, string MecanicoId)
         {
             try
             {
-                repoCliente.EditarCliente(clienteActual, clienteId);
-                repoCliente.ObtenerClientes();
-                return RedirectToPage("/Propietarios/RegistroPropietario");
+                repoMecanico.EditarMecanico(mecanicoActual, MecanicoId);
+                repoMecanico.ObtenerMecanicos();
+                return RedirectToPage("/Mecanicos/GestionMecanico");
             }
             catch
             {

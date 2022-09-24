@@ -68,10 +68,9 @@
                     <option value="Cliente">Propietario</option>
                 </select>
             </div>
-
         </div>
         <a asp-page="/Propietarios/RegistroPropietario" class="btn btn-secondary">Cancelar</a>
-        <button type="submit" class="btn btn-primary" asp-page-handler="Editar" asp-route-clienteId="@Model.clienteActual.ClienteId" asp-route-Nombre="@Model.clienteActual.Nombre">Editar</button>
+        <button type="submit" class="btn btn-primary" asp-page-handler="Editar" asp-route-clienteId="@Model.clienteActual.ClienteId">Editar</button>
     </form>
 
 }

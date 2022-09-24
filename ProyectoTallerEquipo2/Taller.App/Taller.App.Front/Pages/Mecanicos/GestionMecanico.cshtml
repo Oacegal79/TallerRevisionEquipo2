@@ -38,7 +38,9 @@
                     <td>@m.Rol</td>
                     <td>@m.NivelEstudio</td>
                     <td style="display: flex;">
-                        <i class="bi bi-pencil-fill class-icon-edit"></i>
+                        <a asp-page="/Mecanicos/EditarMecanico" asp-route-mecanicoId="@m.MecanicoId">
+                            <i class="bi bi-pencil-fill class-icon-edit" title="Editar Mecanico"></i>
+                        </a>
                         <form method="post">
                             <button class="bi bi-trash3-fill class-icon-del" asp-route-id="@m.MecanicoId"
                             asp-page-handler="EliminarMecanico" type="submit"></button>

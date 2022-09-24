@@ -46,11 +46,11 @@ namespace Taller.App.Front.Pages
             }
         }
 
-        public void OnPostEliminarCliente(string id)
+        public void OnPostEliminarCliente(string clienteId)
         {
             try
             {
-                repoCliente.EliminarCliente(id);
+                repoCliente.EliminarCliente(clienteId);
                 this.ObtenerClientes();
             }
             catch

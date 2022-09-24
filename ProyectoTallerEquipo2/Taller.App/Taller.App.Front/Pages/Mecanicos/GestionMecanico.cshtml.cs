@@ -47,7 +47,6 @@ namespace Taller.App.Front.Pages
 
         public void OnPostEliminarMecanico(string id)
         {
-            Console.WriteLine("llego"+id);
             try
             {
                 repoMecanico.EliminarMecanico(id);
@@ -73,8 +72,5 @@ namespace Taller.App.Front.Pages
                 });
             }
         }
-
-
-
     }
 }
